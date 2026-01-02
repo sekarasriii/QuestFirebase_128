@@ -8,9 +8,6 @@ import java.lang.Exception
 interface RepositorySiswa {
     suspend fun getDataSiswa(): List<Siswa>
     suspend fun postDataSiswa(siswa: Siswa)
-    suspend fun updateSiswa(siswa: Siswa)
-    suspend fun deleteSiswa(siswaId: Long)
-    suspend fun getSatuSiswa(id: Long): Siswa
 }
 
 class FirebaseRepositorySiswa : RepositorySiswa {
@@ -51,41 +48,4 @@ class FirebaseRepositorySiswa : RepositorySiswa {
             throw e
         }
     }
-
-    // Perbaikan 1: Implementasi fungsi updateSiswa yang tadinya hilang
-    override suspend fun updateSiswa(siswa: Siswa) {
-        try {
-            collection.document(siswa.id.toString())
-                .set(siswa)
-                .await()
-        } catch (e: Exception) {
-            throw e
-        }
-    }
-
-    // Perbaikan 2: Mengganti 'firestore' menjadi 'db' (atau gunakan 'collection' langsung)
-    override suspend fun deleteSiswa(siswaId: Long) {
-        try {
-            collection.document(siswaId.toString())
-                .delete()
-                .await()
-        } catch (e: Exception) {
-            throw e
-        }
-    }
-
-    override suspend fun getSatuSiswa(id: Long): Siswa {
-        return try {
-            val doc = collection.document(id.toString()).get().await()
-            Siswa(
-                id = doc.getLong("id")?.toLong() ?: 0,
-                nama = doc.getString("nama") ?: "",
-                alamat = doc.getString("alamat") ?: "",
-                telpon = doc.getString("telpon") ?: ""
-            )
-        } catch (e: Exception) {
-            throw e
-        }
-    }
-
 }
