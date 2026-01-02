@@ -9,7 +9,26 @@
       "client_info": {
         "mobilesdk_app_id": "1:436799732164:android:bf93e8ec2e380041ea8c91",
         "android_client_info": {
-          "package_name": "com.example.Meet14_Firebase"
+          "package_name": "com.example.meet14_firebase"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD0tukw5tiMWFraLY76TCRv2aQ3ybGBASA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:436799732164:android:78d660da54def961ea8c91",
+        "android_client_info": {
+          "package_name": "om.example.meet14_firebase"
         }
       },
       "oauth_client": [],
